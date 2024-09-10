@@ -34,7 +34,7 @@ bcrypt = Bcrypt(app)
 
 users_collection = db['users']
 
-#mongodb+srv://kknumkbalerejo:kknumk_balerejo@cluster0.0kij7.mongodb.net/
+#mongodb+srv://kknumkbalerejo:kknumk_balerejo@cluster0.0kij7.mongodb.net/l
 
 @app.template_filter('datetimeformat')
 def datetimeformat(value, format='%d %b, %Y'):

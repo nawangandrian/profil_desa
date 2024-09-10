@@ -1,0 +1,236 @@
+{% include 'header.html' %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/assets/vendors/linericon/style.css">
+    <link rel="stylesheet" href="../static/assets/css-blog/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/assets/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/assets/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="../static/assets/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="../static/assets/vendors/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="../static/assets/vendors/popup/magnific-popup.css">
+    <link rel="stylesheet" href="../static/assets/vendors/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../static/assets/vendors/scroll/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="../static/assets/css-blog/style.css">
+    <style>
+        .blog-image {
+            width: 100%; /* Memastikan gambar memenuhi lebar kolom */
+            height: 550px; /* Tinggi tetap untuk semua gambar */
+            object-fit: cover; /* Agar gambar tidak terdistorsi dan memenuhi area */
+        }        
+    </style>
+</head>
+
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Berita</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Berita</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <br>
+
+    <!--================ Start banner section =================-->
+    <section class="home-banner-area relative">
+        <div class="container-fluid">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="header-right col-lg-6 col-md-6">
+                    <h1>
+                        Balerejo Breaking news
+                    </h1>
+                    <p class="pt-20">
+                        desa balerejo 
+                    </p>
+                    <a href="#" class="main_btn">
+                        Get Started
+                        <img src="../static/assets/img-blog//next.png" alt="">
+                    </a>
+                </div>
+
+                <div class="col-lg-6 col-md-6 header-left">
+                    <div class="">
+                        <img class="img-fluid w-75" src="../static/assets/img/profil.jpg" alt="">
+                    </div>
+                    <div class="video-popup d-flex align-items-center">
+                        <a class="play-video video-play-button animate" href="https://youtu.be/OxEhRfFPLHw?si=0I--BOH_TiVWX9hK"
+                            data-animate="zoomIn" data-duration="1.5s" data-delay="0.1s">
+                            <span></span>
+                        </a>
+                        <div class="watch">
+                            <h5>Watch Intro Video</h5>
+                            <p>You will love our execution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End banner section =================-->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog_left_sidebar">
+                        {% for blog in blogs %}
+                        <article class="row blog_item">
+                            <div class="col-md-3">
+                                <div class="blog_info text-right">
+                                    <div class="post_tag">
+                                        {% for tag in blog.tags %}
+                                        <a href="#">{{ tag }}</a>{% if not loop.last %},{% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <ul class="blog_meta list">
+                                        <li><a href="#">{{ blog.author }}<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="#">{{ blog.publication_date }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                        <li><a href="#">{{ blog.views }} Views<i class="lnr lnr-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="blog_post">
+                                    <img src="{{ url_for('static', filename='assets/uploads/' + blog.title_image) }}" alt="" class="blog-image">
+                                    <div class="blog_details">
+                                        <a href="{{ url_for('blog_detail', blog_id=blog._id) }}">
+                                            <h2>{{ blog.title }}</h2>
+                                        </a>
+                                        <p>{{ blog.content[:150] }}...</p> <!-- Shortened content for preview -->
+                                        <a href="{{ url_for('blog_detail', blog_id=blog['_id']) }}" class="blog_btn">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <!-- Previous page link -->
+                                <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                                    <a href="{{ url_for('blog', page=page-1) }}" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="lnr lnr-chevron-left"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                        
+                                <!-- Page number links -->
+                                {% for p in range(1, total_pages + 1) %}
+                                <li class="page-item {% if p == page %}active{% endif %}">
+                                    <a href="{{ url_for('blog', page=p) }}" class="page-link">{{ "%02d" % p }}</a>
+                                </li>
+                                {% endfor %}
+                        
+                                <!-- Next page link -->
+                                <li class="page-item {% if page == total_pages %}disabled{% endif %}">
+                                    <a href="{{ url_for('blog', page=page+1) }}" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="lnr lnr-chevron-right"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        
+                    </div>
+                    
+                </div>
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Posts">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="../static/assets/img/profil1.jpg" alt="" width="150" height="150">
+                            <h4>Desa Balerejo</h4>
+                            
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Popular Posts</h3>
+                            
+                            {% for post in popular_posts %}
+                            <div class="media post_item">
+                                <img src="{{ url_for('static', filename='assets/uploads/' + post.title_image) }}" alt="post" width="300" height="175" style="object-fit: cover; display: block; margin: 0 auto;">
+
+                                <div class="media-body">
+                                    <a href="{{ url_for('blog_detail', blog_id=post._id) }}">
+                                        <h3>{{ post.title }}</h3>
+                                    </a>
+                                    <p>{{ post.publication_date | datetimeformat('%d %b, %Y') }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Post Categories</h4>
+                            <ul class="list cat-list">
+                                {% for tag, count in tag_counts.items() %}
+                                <li>
+                                    <a href="{{ url_for('blogs_by_tag', tag_name=tag) }}" class="d-flex justify-content-between">
+                                        <p>{{ tag }}</p>
+                                        <p>{{ count }}</p>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="br"></div>
+                        </aside>
+                        
+                        <aside class="single-sidebar-widget tag_cloud_widget">
+                            <h4 class="widget_title">Tag Clouds</h4>
+                            <ul class="list">
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Teknologi') }}">Teknologi</a></li>
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Layanan') }}">Layanan</a></li>
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Budaya') }}">Budaya</a></li>
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Karya') }}">Karya</a></li>
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Kegiatan') }}">Kegiatan</a></li>
+                                <li><a href="{{ url_for('blogs_by_tag', tag_name='Informasi') }}">Informasi</a></li>
+                            </ul>
+                        </aside>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../static/assets/js-blog/jquery-3.2.1.min.js"></script>
+    <script src="../static/assets/js-blog/popper.js"></script>
+    <script src="../static/assets/js-blog/bootstrap.min.js"></script>
+    <script src="../static/assets/js-blog/stellar.js"></script>
+    <script src="../static/assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="../static/assets/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/assets/vendors/isotope/isotope-min.js"></script>
+    <script src="../static/assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../static/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="../static/assets/js-blog/jquery.ajaxchimp.min.js"></script>
+    <script src="../static/assets/js-blog/mail-script.js"></script>
+    <script src="../static/assets/vendors/popup/jquery.magnific-popup.min.js"></script>
+    <script src="../static/assets/vendors/swiper/js/swiper.min.js"></script>
+    <script src="../static/assets/vendors/scroll/jquery.mCustomScrollbar.js"></script>
+    <script src="../static/assets/js-blog/theme.js"></script>
+</body>
+
+{% include 'footer.html' %}

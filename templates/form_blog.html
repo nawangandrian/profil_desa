@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="../static/assets/vendor-tab/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../static/assets/vendor-tab/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../static/assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor-tab/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="../static/assets/img/profil1.jpg">
+        </div>
+        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/beranda">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Features
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="/crud_blog">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Blog</span>
+        </a>
+      </li>
+      <!-- Tambahkan tombol logout di sini -->
+        <hr class="sidebar-divider">
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutButton" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+        
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Form Basics</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item">Blog</li>
+              <li class="breadcrumb-item active" aria-current="page">Form Blog</li>
+            </ol>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+
+              <div class="container">
+                <h2>FORM Artikel</h2>
+                <form method="POST" action="/blog/create" enctype="multipart/form-data">
+                    <!-- Title Input -->
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="" required>
+                    </div>
+            
+                    <!-- Initial Image Input -->
+                    <div class="form-group">
+                        <label for="title_image">Title Image</label>
+                        <input type="file" class="form-control-file" id="title_image" name="title_image" accept="image/*" required>
+                    </div>
+            
+                    <!-- Author Input -->
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" value="" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="archived">Archive this blog?</label>
+                      <input type="checkbox" id="archived" name="archived">
+                  </div>                  
+            
+                    <!-- Publication Date Input -->
+                    <div class="form-group">
+                        <label for="publication_date">Publication Date</label>
+                        <input type="date" class="form-control" id="publication_date" name="publication_date" value="" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="quotes">Quotes (Opsional)</label>
+                      <textarea class="form-control" id="quotes" name="quotes" rows="3"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tags">Pilih Tags:</label>
+                    <select id="tags" name="tags" class="form-control" multiple>
+                        <option value="Teknologi">Teknologi</option>
+                        <option value="Layanan">Layanan</option>
+                        <option value="Budaya">Budaya</option>
+                        <option value="Karya">Karya</option>
+                        <option value="Kegiatan">Kegiatan</option>
+                        <option value="Informasi">Informasi</option>
+                    </select>
+                </div>                
+            
+                    <!-- Number of Additional Images -->
+                    <div class="form-group">
+                        <label for="image_count">Number of Additional Images</label>
+                        <input type="number" class="form-control" id="image_count" name="image_count" value="0" min="0" required>
+                    </div>
+            
+                    <!-- Dynamic Image Uploads -->
+                    <div id="image_uploads">
+                        <!-- Placeholder for dynamic image inputs -->
+                    </div>
+            
+                    <!-- Number of Content Paragraphs -->
+                    <div class="form-group">
+                        <label for="content_count">Number of Content Paragraphs</label>
+                        <input type="number" class="form-control" id="content_count" name="content_count" value="1" min="1" required>
+                    </div>
+            
+                    <!-- Dynamic Content Paragraphs -->
+                    <div id="content_paragraphs">
+                        <!-- Placeholder for dynamic content inputs -->
+                    </div>
+            
+                    <!-- Initial Views -->
+                    <div class="form-group">
+                        <input type="hidden" name="initial_views" value="0">
+                    </div>
+            
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>            
+                
+            </div>
+          </div>
+          <!--Row-->
+
+          <!-- Documentation Link -->
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <p>For more documentations you can visit<a href="https://getbootstrap.com/docs/4.3/components/forms/"
+                  target="_blank">
+                  bootstrap forms documentations.</a> and <a
+                  href="https://getbootstrap.com/docs/4.3/components/input-group/" target="_blank">bootstrap input
+                  groups documentations</a></p>
+            </div>
+          </div>
+
+          <script>
+            // Handle dynamic image uploads
+            document.getElementById('image_count').addEventListener('input', function() {
+              const count = parseInt(this.value) || 0;
+              const container = document.getElementById('image_uploads');
+              container.innerHTML = '';
+
+              for (let i = 0; i < count; i++) {
+                  const div = document.createElement('div');
+                  div.classList.add('form-group');
+                  div.innerHTML = `
+                      <label for="additional_image_${i}">Additional Image ${i + 1}</label>
+                      <input type="file" class="form-control-file" id="additional_image_${i}" name="additional_images[]" accept="image/*">
+                  `;
+                  container.appendChild(div);
+              }
+            });
+
+            // Handle dynamic content paragraphs
+            document.getElementById('content_count').addEventListener('input', function() {
+              const count = parseInt(this.value) || 1;
+              const container = document.getElementById('content_paragraphs');
+              container.innerHTML = '';
+
+              for (let i = 0; i < count; i++) {
+                  const div = document.createElement('div');
+                  div.classList.add('form-group');
+                  div.innerHTML = `
+                      <label for="content_paragraph_${i}">Content Paragraph ${i + 1}</label>
+                      <textarea class="form-control" id="content_paragraph_${i}" name="content_paragraphs[]" rows="5" required></textarea>
+                  `;
+                  container.appendChild(div);
+              }
+            });
+        </script>
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to logout?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!---Container Fluid-->
+  </div>
+
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script>
+        </span>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer -->
+</div>
+</div>
+
+<!-- Scroll to top -->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+<script src="../static/assets/vendor-tab/jquery/jquery.min.js"></script>
+<script src="../static/assets/vendor-tab/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/assets/vendor-tab/jquery-easing/jquery.easing.min.js"></script>
+<script src="../static/assets/js-tab/ruang-admin.min.js"></script>
+<!-- Page level plugins -->
+<script src="../static/assets/vendor-tab/datatables/jquery.dataTables.min.js"></script>
+<script src="../static/assets/vendor-tab/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!-- Page level custom scripts -->
+<script>
+$(document).ready(function () {
+  $('#dataTable').DataTable(); // ID From dataTable 
+  $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+});
+document.getElementById('logoutButton').addEventListener('click', function() {
+    $('#logoutModal').modal('show');
+});
+
+</script>
+
+</body>
+
+</html>

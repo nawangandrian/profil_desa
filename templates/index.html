@@ -1,0 +1,210 @@
+{% include 'header.html' %}
+
+    <style>
+        .blog-image {
+            width: 100%; /* Memastikan gambar memenuhi lebar kolom */
+            height: 550px; /* Tinggi tetap untuk semua gambar */
+            object-fit: cover; /* Agar gambar tidak terdistorsi dan memenuhi area */
+        }        
+    </style>
+
+    <!-- Carousel Start -->
+    <div class="container-fluid header-carousel px-0 mb-5">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="../static/assets/img/profil.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-7 text-start">
+                                    <h1 class="display-1 text-white animated slideInRight mb-3">Selamat Datang di Desa Balerejo</h1>
+                                    <p class="mb-5 animated slideInRight">Temukan keindahan dan potensi Desa Balerejo melalui berbagai informasi dan berita terbaru kami. Jelajahi profil desa kami untuk mengetahui lebih dalam mengenai komunitas, budaya, dan keunggulan yang kami tawarkan.</p>
+                                    <a href="/profil_desa" class="btn btn-primary py-3 px-5 animated slideInRight">Jelajahi Lebih Lanjut</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="../static/assets/img/prifil1.jpg" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-end">
+                                <div class="col-lg-7 text-end">
+                                    <h1 class="display-1 text-white animated slideInLeft mb-3">Potensi Desa yang Menginspirasi</h1>
+                                    <p class="mb-5 animated slideInLeft">Desa Balerejo tidak hanya kaya akan budaya, tetapi juga memiliki berbagai potensi ekonomi dan sumber daya alam yang menjanjikan. Mari bersama-sama membangun desa ini menjadi lebih maju.</p>
+                                    <a href="/potensi_desa" class="btn btn-primary py-3 px-5 animated slideInLeft">Lihat Potensi Desa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <img class="img-fluid" src="../static/assets/img/profil1.jpg">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="../static/assets/img/aula.jpg">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="../static/assets/img/pelayanan.jpg">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="../static/assets/img/kades.jpg">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="../static/assets/img/bumdes.jpg">
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-primary w-100 h-100 mt-n5 ms-n5 d-flex flex-column align-items-center justify-content-center">
+                                <div class="icon-box-light">
+                                    <i class="bi bi-award text-dark"></i>
+                                </div>
+                                <h1 class="display-1 text-white mb-0" data-toggle="counter-up">95</h1>
+                                <small class="fs-5 text-white">Years Experience</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-6 mb-4">Balerejo</h1>
+                    <p class="mb-4">Pada zaman Pemerintahan Lurah H. Abdul Hamid tahun 1929 ada atuiran 
+                        pembelengketan Desa desa menjadi Dukuh,yang lewat Ndoro Camat dan 
+                        Ndoro Dono, pada saat itu Kecamatan ada di Luwuk dan Kawedanan ada di 
+                        Dempet, maka terjadilah perubahan Pemblengketan Desa satu dengan Desa 
+                        Yang lain dengan di pimpin oleh seorang Lurah.Maka dengan keputusan Doro 
+                        Camat untuk Tempel, Balungkendal, Gendok, Maredan, Duari itu semua di
+                        blengket menjadi Desa Balerejo yang artinya Bale itu tempat, Rejo itu makmur. 
+                        Dan ini urutan Pemerintahan Desa Balerejo Kec. Dempet, Kabupaten Demak.
+                        Desa Balerejo merupakan Desa paling ujung Timur Laut perbatasan 
+                        Kecamatan Dempet dengan Kecamatan Klambu Kabupaten Grobogan 8 
+                        KM dari jarak Kecamatan Dempet.
+                        </p>
+                    <div class="row g-4 g-sm-5 justify-content-center">
+                        <div class="col-sm-6">
+                            <div class="about-fact btn-square flex-column rounded-circle bg-primary ms-sm-auto">
+                                <p class="text-white mb-0">penghargaan</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">9999</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-start">
+                            <div class="about-fact btn-square flex-column rounded-circle bg-secondary me-sm-auto">
+                                <p class="text-white mb-0">kepercayaan masyarakat</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">9999</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-fact mt-n130 btn-square flex-column rounded-circle bg-dark mx-sm-auto">
+                                <p class="text-white mb-0">Pelayanan</p>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">9999</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-0 feature-row">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-award text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Award Winning</h5>
+                        <p class="mb-0">Berkomimen untuk memenangkan berbagai penghargaan</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-people text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">SDM</h5>
+                        <p class="mb-0">Pemberdayaan SDM</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-cash-coin text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Anggaran</h5>
+                        <p class="mb-0">APBD Yang transparan.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="feature-item border h-100 p-5">
+                        <div class="icon-box-primary mb-4">
+                            <i class="bi bi-headphones text-dark"></i>
+                        </div>
+                        <h5 class="mb-3">Pelayanan</h5>
+                        <p class="mb-0">Memberikan pelayanan dengan baik dan tanpa pamrih</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area section_gap">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="display-6 mb-3">Informasi Terkini dari Desa Balerejo</h1>
+                <p class="mb-5">Temukan berita, kegiatan, dan informasi terbaru dari Desa kami. Kami berkomitmen untuk menyajikan berita yang akurat dan terkini untuk Anda.</p>
+            </div>
+            <div class="row" style="display: flex; justify-content: center; align-items: center;">
+                <div class="col-lg-8">
+                    <div class="blog_left_sidebar">
+                        {% for blog in blogs %}
+                        <article class="row blog_item" style="margin-bottom: 1rem;">
+                            <div class="col-md-12">
+                                <div class="blog_post">
+                                    <img src="{{ url_for('static', filename='assets/uploads/' + blog.title_image) }}" alt="" class="img-fluid blog-image">
+                                    <div class="blog_details">
+                                        <a href="{{ url_for('blog_detail', blog_id=blog._id) }}">
+                                            <h2>{{ blog.title }}</h2>
+                                        </a>
+                                        <p>{{ blog.content[:150] }}...</p> 
+                                        <a href="{{ url_for('blog_detail', blog_id=blog['_id']) }}" class="blog_btn" >View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <!--================Blog Area =================-->
+    {% include 'footer.html' %}
